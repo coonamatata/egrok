@@ -1,0 +1,20 @@
+[server]
+public_port = 443
+cert_path = "/etc/letsencrypt/live/egrok.exaba.io/fullchain.pem"
+key_path = "/etc/letsencrypt/live/egrok.exaba.io/privkey.pem"
+domain = "egrok.exaba.io"
+
+[[customers]]
+name = "test"
+backhaul_port = 9001
+token_hash = "sha256:9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08"
+
+[[customers]]
+name = "acme"
+backhaul_port = 9002
+token_hash = "sha256:60303ae22b998861bce3b28f33eec1be758a213c86c93c076dbe9f558c11c752"
+
+[[customers]]
+name = "demo"
+backhaul_port = 9003
+token_hash = "sha256:2cf24dba5fb0a30e26e83b2ac5b9e29e1b161e5c1fa7425e73043362938b9824"
