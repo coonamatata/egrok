@@ -1,0 +1,18 @@
+[server]
+public_port = 8443
+cert_path = "local.crt"
+key_path = "local.key"
+domain = "localhost"
+
+# Both tunnels use the same token — set egrok_token = "test" in the app's settings screen.
+# To use a different token: cargo run --release --bin egrok-server -- hash-token <yourtoken>
+
+[[customers]]
+name = "mgmt"
+backhaul_port = 7002
+token_hash = "sha256:9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08"
+
+[[customers]]
+name = "s3"
+backhaul_port = 7001
+token_hash = "sha256:9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08"

@@ -5,6 +5,7 @@ members = [
     "egrok-server",
     "egrok",
     "example-server",
+    "egrokshim",
 ]
 
 [workspace.dependencies]
