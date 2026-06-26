@@ -299,11 +299,14 @@ async fn handle_public_request(
     manager: Arc<TunnelManager>,
     domain: String,
 ) -> Result<Response<Full<Bytes>>, hyper::Error> {
-    let host = req
+    let host_raw = req
         .headers()
         .get("host")
         .and_then(|h| h.to_str().ok())
         .unwrap_or("");
+
+    // Strip port suffix so "mgmt.localhost:8443" matches domain "localhost"
+    let host = host_raw.split(':').next().unwrap_or(host_raw);
 
     let customer_name = if host.ends_with(&domain) {
         host.strip_suffix(&format!(".{}", domain))
